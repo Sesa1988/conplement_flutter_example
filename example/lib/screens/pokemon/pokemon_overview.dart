@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:example/screens/pokemon/bloc/pokemon_bloc.dart';
 import 'package:example/screens/pokemon/widgets/pokemon_card.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +15,13 @@ class PokemonOverview extends StatefulWidget {
 }
 
 class _PokemonOverviewState extends State<PokemonOverview> {
+  late Completer<void> _refreshCompleter;
+
   @override
   void initState() {
     super.initState();
-    context.read<PokemonBloc>().add(GetPokemons());
+    _refreshCompleter = Completer<void>();
+    context.read<PokemonBloc>().add(const GetPokemons());
   }
 
   @override
@@ -32,15 +37,23 @@ class _PokemonOverviewState extends State<PokemonOverview> {
             return const Center(child: Text('Error'));
           }
           if (state is PokemonsLoaded) {
-            return ListView.separated(
-              separatorBuilder: (context, index) {
-                return const Divider(height: 1);
+            return RefreshIndicator(
+              onRefresh: () {
+                context
+                    .read<PokemonBloc>()
+                    .add(const GetPokemons(forceRefresh: true));
+                return _refreshCompleter.future;
               },
-              itemCount: state.pokemons.length,
-              itemBuilder: (context, index) {
-                var pokemon = state.pokemons[index];
-                return PokemonCard(pokemon.name, pokemon.url);
-              },
+              child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return const Divider(height: 1);
+                },
+                itemCount: state.pokemons.length,
+                itemBuilder: (context, index) {
+                  var pokemon = state.pokemons[index];
+                  return PokemonCard(pokemon.name, pokemon.url);
+                },
+              ),
             );
           }
           return Container();

@@ -20,7 +20,7 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
     try {
       emit(PokemonsLoading());
 
-      if (_pokemons.isEmpty) {
+      if (_pokemons.isEmpty || event.forceRefresh) {
         _pokemons = await _pokemonService.getAll();
       }
 
