@@ -21,8 +21,8 @@
             "flutterMode": "debug",
             "program": "example/lib/main.dart",
             "args": [
-                "--flavor",
-                "live",
+                /* "--flavor",
+                "live", */
                 "--dart-define=env_name=live",
                 "--dart-define=use_fake_ads=true",
             ]
