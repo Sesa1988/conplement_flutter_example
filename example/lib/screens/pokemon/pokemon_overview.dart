@@ -51,7 +51,7 @@ class _PokemonOverviewState extends State<PokemonOverview> {
                 itemCount: state.pokemons.length,
                 itemBuilder: (context, index) {
                   var pokemon = state.pokemons[index];
-                  return PokemonCard(pokemon.name, pokemon.url);
+                  return PokemonCard(pokemon.name);
                 },
               ),
             );
