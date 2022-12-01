@@ -8,8 +8,8 @@
             "flutterMode": "debug",
             "program": "example/lib/main.dart",
             "args": [
-                "--flavor",
-                "dev",
+                /* "--flavor",
+                "dev", */
                 "--dart-define=env_name=dev",
                 "--dart-define=use_fake_ads=true",
             ]
