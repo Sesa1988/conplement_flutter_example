@@ -7,7 +7,7 @@ class Pokemon extends Equatable {
 
   const Pokemon({required this.name});
 
-  Pokemon copyWith({String? name, String? description}) {
+  Pokemon copyWith({String? name}) {
     return Pokemon(name: name ?? this.name);
   }
 
