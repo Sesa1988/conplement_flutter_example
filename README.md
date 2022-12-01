@@ -25,9 +25,3 @@
 - `flutter run --profile --flavor live --cache-sksl --purge-persistent-cache --dart-define=env_name=live --dart-define=use_fake_ads=true`
 
 - `flutter build appbundle --release --flavor live --obfuscate --split-debug-info=build/app/outputs/symbols --dart-define=env_name=live --dart-define=use_fake_ads=true --bundle-sksl-path flutter_android.sksl.json`
-
-### Infos
-
-All analytics images are 420x210
-
-<https://www.calculatorsoup.com/calculators/algebra/percent-change-calculator.php>
