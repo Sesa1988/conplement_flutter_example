@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PokemonOverview extends StatelessWidget {
-  static const String routeName = "/home";
+  static const String routeName = "/pokemons";
 
   const PokemonOverview({Key? key}) : super(key: key);
 
