@@ -29,7 +29,11 @@ class _PokemonOverviewState extends State<PokemonOverview> {
             return const CircularProgressIndicator();
           }
           if (state is PokemonsLoaded) {
-            return ListView.builder(
+            return ListView.separated(
+              separatorBuilder: (context, index) {
+                return const Divider(height: 1);
+              },
+              itemCount: state.pokemons.length,
               itemBuilder: (context, index) {
                 var pokemon = state.pokemons[index];
                 return PokemonCard(pokemon.name, pokemon.url);

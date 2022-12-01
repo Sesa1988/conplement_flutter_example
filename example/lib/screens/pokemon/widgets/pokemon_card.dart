@@ -1,3 +1,4 @@
+import 'package:example/screens/pokemon_details/pokemon_details.dart';
 import 'package:flutter/material.dart';
 
 class PokemonCard extends StatelessWidget {
@@ -8,6 +9,12 @@ class PokemonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(child: Text(name));
+    return InkWell(
+      onTap: () => Navigator.of(context).pushNamed(PokemonDetails.routeName),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Text(name),
+      ),
+    );
   }
 }
