@@ -5,7 +5,7 @@
 
 - `flutter build appbundle --release --flavor live --obfuscate --split-debug-info=build/app/outputs/symbols --dart-define=env_name=live --dart-define=use_fake_ads=true`
 
-### Android with SkSL caching build
+### Android with SkSL caching
 
 - `flutter run --profile --flavor live --cache-sksl --purge-persistent-cache --dart-define=env_name=live --dart-define=use_fake_ads=true`
 
