@@ -6,7 +6,7 @@
             "type": "dart",
             "request": "launch",
             "flutterMode": "debug",
-            "program": "lib/main.dart",
+            "program": "example/lib/main.dart",
             "args": [
                 "--flavor",
                 "dev",
@@ -19,7 +19,7 @@
             "type": "dart",
             "request": "launch",
             "flutterMode": "debug",
-            "program": "lib/main.dart",
+            "program": "example/lib/main.dart",
             "args": [
                 "--flavor",
                 "live",
@@ -32,7 +32,7 @@
             "type": "dart",
             "request": "launch",
             "flutterMode": "debug",
-            "program": "lib/main_desktop.dart",
+            "program": "example/lib/main_desktop.dart",
             "args": [
                 "-d",
                 "macos",
@@ -45,7 +45,7 @@
             "type": "dart",
             "request": "launch",
             "flutterMode": "debug",
-            "program": "lib/main_desktop.dart",
+            "program": "example/lib/main_desktop.dart",
             "args": [
                 "-d",
                 "windows",
@@ -58,7 +58,7 @@
             "type": "dart",
             "request": "launch",
             "flutterMode": "debug",
-            "program": "lib/main_web.dart",
+            "program": "example/lib/main_web.dart",
             "args": [
                 "-d",
                 "chrome",
