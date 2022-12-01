@@ -26,7 +26,10 @@ class _PokemonOverviewState extends State<PokemonOverview> {
       body: BlocBuilder<PokemonBloc, PokemonState>(
         builder: (context, state) {
           if (state is PokemonsLoading) {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state is PokemonsError) {
+            return const Center(child: Text('Error'));
           }
           if (state is PokemonsLoaded) {
             return ListView.separated(
