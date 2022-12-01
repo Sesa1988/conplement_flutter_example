@@ -1,3 +1,4 @@
+import 'package:example/screens/pokemon/pokemon_overview.dart';
 import 'package:flutter/material.dart';
 
 void start() {
@@ -12,14 +13,18 @@ class ExampleApp extends StatefulWidget {
 class _ExampleAppState extends State<ExampleApp> {
   @override
   Widget build(BuildContext context) {
-    var themeData = ThemeData(primarySwatch: Colors.blue);
+    var themeData = ThemeData(primarySwatch: Colors.green);
 
     return MaterialApp(
       title: 'ExampleApp',
       debugShowCheckedModeBanner: false,
       theme: themeData.copyWith(
-        colorScheme: themeData.colorScheme.copyWith(secondary: Colors.blue),
+        colorScheme: themeData.colorScheme.copyWith(secondary: Colors.green),
       ),
+      initialRoute: PokemonOverview.routeName,
+      routes: {
+        PokemonOverview.routeName: (context) => const PokemonOverview(),
+      },
     );
   }
 }
