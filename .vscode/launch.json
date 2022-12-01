@@ -1,0 +1,72 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run dev",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "debug",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor",
+                "dev",
+                "--dart-define=env_name=dev",
+                "--dart-define=use_fake_ads=true",
+            ]
+        },
+        {
+            "name": "Run live",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "debug",
+            "program": "lib/main.dart",
+            "args": [
+                "--flavor",
+                "live",
+                "--dart-define=env_name=live",
+                "--dart-define=use_fake_ads=true",
+            ]
+        },
+        {
+            "name": "Run macos dev",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "debug",
+            "program": "lib/main_desktop.dart",
+            "args": [
+                "-d",
+                "macos",
+                "--dart-define=env_name=dev",
+                "--dart-define=use_fake_ads=true",
+            ]
+        },
+        {
+            "name": "Run windows dev",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "debug",
+            "program": "lib/main_desktop.dart",
+            "args": [
+                "-d",
+                "windows",
+                "--dart-define=env_name=dev",
+                "--dart-define=use_fake_ads=true",
+            ]
+        },
+        {
+            "name": "Run web dev",
+            "type": "dart",
+            "request": "launch",
+            "flutterMode": "debug",
+            "program": "lib/main_web.dart",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-renderer",
+                "canvaskit",
+                "--dart-define=env_name=dev",
+                "--dart-define=use_fake_ads=true",
+            ]
+        },
+    ]
+}
