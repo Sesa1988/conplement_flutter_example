@@ -17,12 +17,16 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
 
   Future<void> _getPokemons(
       GetPokemons event, Emitter<PokemonState> emit) async {
-    emit(PokemonsLoading());
+    try {
+      emit(PokemonsLoading());
 
-    if (_pokemons.isEmpty) {
-      _pokemons = await _pokemonService.getAll();
+      if (_pokemons.isEmpty) {
+        _pokemons = await _pokemonService.getAll();
+      }
+
+      emit(PokemonsLoaded(_pokemons));
+    } catch (e) {
+      emit(PokemonsError());
     }
-
-    emit(PokemonsLoaded(_pokemons));
   }
 }

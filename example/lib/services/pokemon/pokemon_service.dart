@@ -28,7 +28,7 @@ class PokemonService implements IPokemonService {
 
     if (response.statusCode == 200) {
       var bodyResponse = json.decode(response.body);
-      Iterable data = bodyResponse;
+      Iterable data = bodyResponse['results'];
 
       return List<Pokemon>.from(
         data.map((model) => Pokemon.fromMap(model)),

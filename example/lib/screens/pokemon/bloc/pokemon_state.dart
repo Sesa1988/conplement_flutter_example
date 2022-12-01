@@ -11,11 +11,13 @@ class PokemonInitial extends PokemonState {}
 
 class PokemonsLoading extends PokemonState {}
 
-class PokemonsLoaded extends PokemonState {
-  final List<Pokemon> _pokemons;
+class PokemonsError extends PokemonState {}
 
-  const PokemonsLoaded(this._pokemons);
+class PokemonsLoaded extends PokemonState {
+  final List<Pokemon> pokemons;
+
+  const PokemonsLoaded(this.pokemons);
 
   @override
-  List<Object> get props => [_pokemons];
+  List<Object> get props => [pokemons];
 }

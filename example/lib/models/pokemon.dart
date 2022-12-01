@@ -18,7 +18,7 @@ class Pokemon extends Equatable {
   static Pokemon fromMap(Map<String, dynamic> data) {
     return Pokemon(
       name: data['name'],
-      url: data['description'],
+      url: data['url'],
     );
   }
 
