@@ -1,5 +1,6 @@
 import 'package:example/screens/pokemon/bloc/pokemon_bloc.dart';
 import 'package:example/screens/pokemon/widgets/pokemon_collection.dart';
+import 'package:example/screens/shared_widgets/retry/retry_action.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,7 +37,13 @@ class _PokemonOverviewState extends State<PokemonOverview> {
             return const Center(child: CircularProgressIndicator());
           }
           if (state is PokemonsError) {
-            if (state.pokemons.isEmpty) return _retry();
+            if (state.pokemons.isEmpty) {
+              return RetryAction(
+                () => context.read<PokemonBloc>().add(
+                      const GetPokemons(forceRefresh: true),
+                    ),
+              );
+            }
             return PokemonCollection(state.pokemons);
           }
           if (state is PokemonsLoaded) {
@@ -44,26 +51,6 @@ class _PokemonOverviewState extends State<PokemonOverview> {
           }
           return Container();
         },
-      ),
-    );
-  }
-
-  Widget _retry() {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Icon(Icons.sentiment_dissatisfied_outlined, size: 64),
-          const SizedBox(height: 5),
-          TextButton(
-            onPressed: () => context.read<PokemonBloc>().add(
-                  const GetPokemons(forceRefresh: true),
-                ),
-            child: const Text('Retry'),
-          ),
-        ],
       ),
     );
   }
