@@ -23,19 +23,47 @@ class _PokemonOverviewState extends State<PokemonOverview> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Pokemons')),
-      body: BlocBuilder<PokemonBloc, PokemonState>(
+      body: BlocConsumer<PokemonBloc, PokemonState>(
+        listener: (context, state) {
+          if (state is PokemonsError) {
+            const snackBar = SnackBar(content: Text('Oh no :('));
+            ScaffoldMessenger.of(context).clearSnackBars();
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          }
+        },
         builder: (context, state) {
           if (state is PokemonsLoading) {
             return const Center(child: CircularProgressIndicator());
           }
           if (state is PokemonsError) {
-            return const Center(child: Text('Error'));
+            if (state.pokemons.isEmpty) return _retry();
+            return PokemonCollection(state.pokemons);
           }
           if (state is PokemonsLoaded) {
             return PokemonCollection(state.pokemons);
           }
           return Container();
         },
+      ),
+    );
+  }
+
+  Widget _retry() {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Icon(Icons.sentiment_dissatisfied_outlined, size: 64),
+          const SizedBox(height: 5),
+          TextButton(
+            onPressed: () => context.read<PokemonBloc>().add(
+                  const GetPokemons(forceRefresh: true),
+                ),
+            child: const Text('Retry'),
+          ),
+        ],
       ),
     );
   }

@@ -20,13 +20,15 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
     try {
       emit(PokemonsLoading());
 
+      //throw Exception();
+
       if (_pokemons.isEmpty || event.forceRefresh) {
         _pokemons = await _pokemonService.getAll();
       }
 
       emit(PokemonsLoaded(_pokemons));
     } catch (e) {
-      emit(PokemonsError());
+      emit(PokemonsError(_pokemons));
     }
   }
 }

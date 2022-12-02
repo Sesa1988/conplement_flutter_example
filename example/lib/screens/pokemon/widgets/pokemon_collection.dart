@@ -17,7 +17,8 @@ class PokemonCollection extends StatelessWidget {
     return RefreshIndicator(
       onRefresh: () {
         context.read<PokemonBloc>().add(const GetPokemons(forceRefresh: true));
-        return Completer<void>().future;
+        var completer = Completer<void>()..complete();
+        return completer.future;
       },
       child: ScrollConfiguration(
         behavior: ScrollConfiguration.of(context).copyWith(
