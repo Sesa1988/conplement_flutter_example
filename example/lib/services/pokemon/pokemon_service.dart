@@ -24,6 +24,7 @@ class PokemonService implements IPokemonService {
           ))
           .timeout(const Duration(seconds: 15)),
       retryIf: (e) => e is TimeoutException,
+      maxAttempts: 3,
     );
 
     if (response.statusCode == 200) {
