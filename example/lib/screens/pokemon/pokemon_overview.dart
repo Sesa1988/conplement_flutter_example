@@ -37,14 +37,12 @@ class _PokemonOverviewState extends State<PokemonOverview> {
             return const Center(child: CircularProgressIndicator());
           }
           if (state is PokemonsError) {
-            if (state.pokemons.isEmpty) {
-              return RetryAction(
-                () => context.read<PokemonBloc>().add(
-                      const GetPokemons(forceRefresh: true),
-                    ),
-              );
-            }
-            return PokemonCollection(state.pokemons);
+            return RetryAction(
+              () => context.read<PokemonBloc>().add(
+                    const GetPokemons(forceRefresh: true),
+                  ),
+              PokemonCollection(state.pokemons),
+            );
           }
           if (state is PokemonsLoaded) {
             return PokemonCollection(state.pokemons);
