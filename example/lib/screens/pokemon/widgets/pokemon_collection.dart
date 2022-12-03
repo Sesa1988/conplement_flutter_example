@@ -29,9 +29,7 @@ class PokemonCollection extends StatelessWidget {
           },
         ),
         child: ListView.separated(
-          separatorBuilder: (context, index) {
-            return const Divider(height: 1);
-          },
+          separatorBuilder: (context, index) => const Divider(height: 1),
           itemCount: pokemons.length,
           itemBuilder: (context, index) {
             var pokemon = pokemons[index];

@@ -22,7 +22,9 @@ class PokemonService implements IPokemonService {
               'offset': '0',
             },
           ))
-          .timeout(const Duration(seconds: 15)),
+          .timeout(
+            const Duration(seconds: 15),
+          ),
       retryIf: (e) => e is TimeoutException,
       maxAttempts: 3,
     );
