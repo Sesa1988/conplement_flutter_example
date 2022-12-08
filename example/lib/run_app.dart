@@ -22,14 +22,10 @@ class ExampleApp extends StatefulWidget {
 class _ExampleAppState extends State<ExampleApp> {
   @override
   Widget build(BuildContext context) {
-    var themeData = ThemeData(primarySwatch: Colors.green);
-
     return MaterialApp(
       title: 'ExampleApp',
       debugShowCheckedModeBanner: false,
-      theme: themeData.copyWith(
-        colorScheme: themeData.colorScheme.copyWith(secondary: Colors.green),
-      ),
+      theme: ThemeData(primarySwatch: Colors.green),
       initialRoute: PokemonOverview.routeName,
       routes: {
         PokemonOverview.routeName: (context) => const PokemonOverview(),
